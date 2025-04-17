@@ -1,3 +1,6 @@
+# In future you need more file than add that file in this list of file then execute code. 
+# This script ignore already available file.
+
 import os
 from pathlib import Path
 import logging

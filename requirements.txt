@@ -1,3 +1,6 @@
 scikit-learn
 pandas
 numpy
+PyYAML # to handle .yaml file
+streamlit
+-e . # for setup file
