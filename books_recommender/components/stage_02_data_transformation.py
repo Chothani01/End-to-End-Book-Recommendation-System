@@ -9,7 +9,7 @@ from books_recommender.exception.exception_handler import AppException
 class DataTransformation:
     def __init__(self, app_config = Appconfiguration()):
         try:
-            self.data_transformation_config = app_config.get_data_transformed_config()
+            self.data_transformation_config = app_config.get_data_transformation_config()
             self.data_validation_config = app_config.get_data_validation_config()
         except Exception as e:
             raise AppException(e, sys) from e
