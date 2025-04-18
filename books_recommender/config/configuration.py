@@ -36,7 +36,7 @@ class Appconfiguration:
         
     def get_data_validation_config(self) -> DataValidationConfig:
         try:
-            data_validation_config = self.configs_info['data_validation_config']
+            data_validation_config = self.config_info['data_validation_config']
             data_ingestion_config = self.configs_info['data_ingestion_config']
             artifacts_dir = self.configs_info['artifacts_config']['artifacts_dir']
             dataset_dir = data_ingestion_config['dataset_dir']
@@ -61,7 +61,7 @@ class Appconfiguration:
         except Exception as e:
             raise AppException(e, sys) from e
         
-    def get_data_transformation_config(self) -> DataTransformationConfig:
+    def get_data_transformed_config(self) -> DataTransformationConfig:
         try:
             data_transformation_config = self.configs_info['data_trasformation_config']
             data_validation_config = self.configs_info['data_validation_config']
