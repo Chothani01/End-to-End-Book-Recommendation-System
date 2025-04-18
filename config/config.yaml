@@ -1,0 +1,14 @@
+artifacts_config: 
+  # Directory where all artifacts (outputs, models, logs) will be stored
+  artifacts_dir: artifacts 
+ 
+data_ingestion_config:
+  # URL to download the dataset from, which is a ZIP file containing book data.
+  dataset_download_url: https://github.com/entbappy/Branching-tutorial/raw/master/books_data.zip
+  #  Directory where the dataset will be extracted or stored, here "dataset".
+  dataset_dir: dataset
+  # Directory where the ingested (processed or prepared) data will be saved, "ingested_data".
+  ingested_dir: ingested_data
+  # Directory for raw data before processing, "raw_data".
+  raw_data_dir: raw_data
+

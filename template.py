@@ -45,7 +45,7 @@ for filepath in list_of_files:
     filedir, filename = os.path.split(filepath)
 
     if filedir !="":
-        os.makedirs(filedir, exist_ok=True)
+        os.makedirs(filedir, exist_ok=True) # exist_ok=True is manage error due to already created same name folder
         logging.info(f"Creating directory: {filedir} for the file {filename}")
 
     
