@@ -1,6 +1,3 @@
-# In future you need more file than add that file in this list of file then execute code. 
-# This script ignore already available file.
-
 import os
 from pathlib import Path
 import logging
@@ -36,6 +33,8 @@ list_of_files = [
     "app.py",
     "Dockerfile",
     "setup.py"
+
+
 ]
 
 
@@ -45,7 +44,7 @@ for filepath in list_of_files:
     filedir, filename = os.path.split(filepath)
 
     if filedir !="":
-        os.makedirs(filedir, exist_ok=True) # exist_ok=True is manage error due to already created same name folder
+        os.makedirs(filedir, exist_ok=True)
         logging.info(f"Creating directory: {filedir} for the file {filename}")
 
     

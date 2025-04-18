@@ -1,6 +1,6 @@
-scikit-learn
-pandas
+scikit-learn 
+pandas 
 numpy
-PyYAML # to handle .yaml file
+PyYAML
 streamlit
--e . # for setup file
+-e .
