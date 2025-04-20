@@ -70,7 +70,7 @@ git clone "your-project"
 ```
 
 ```bash
-docker build -t entbappy/stapp:latest . 
+docker build -t Chothani01/stapp:latest . 
 ```
 
 ```bash
@@ -78,7 +78,7 @@ docker images -a
 ```
 
 ```bash
-docker run -d -p 8501:8501 entbappy/stapp 
+docker run -d -p 8501:8501 Chothani01/stapp 
 ```
 
 ```bash
@@ -98,15 +98,15 @@ docker login
 ```
 
 ```bash
-docker push entbappy/stapp:latest 
+docker push Chothani01/stapp:latest 
 ```
 
 ```bash
-docker rmi entbappy/stapp:latest
+docker rmi Chothani01/stapp:latest
 ```
 
 ```bash
-docker pull entbappy/stapp
+docker pull Chothani01/stapp
 ```
 
 
