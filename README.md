@@ -108,10 +108,3 @@ docker rmi Chothani01/stapp:latest
 ```bash
 docker pull Chothani01/stapp
 ```
-
-
-
-
-
-
-
