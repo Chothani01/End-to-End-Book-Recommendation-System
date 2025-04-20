@@ -17,47 +17,29 @@ class Recommendation:
             raise AppException(e, sys) from e
 
 
-    def fetch_poster(self,suggestion):
-        try:
-            book_name = []
-            ids_index = []
-            poster_url = []
-            book_pivot =  pickle.load(open(self.recommendation_config.book_pivot_serialized_objects,'rb'))
-            final_rating =  pickle.load(open(self.recommendation_config.final_rating_serialized_objects,'rb'))
-
-            for book_id in suggestion:
-                book_name.append(book_pivot.index[book_id])
-
-            for name in book_name[0]: 
-                ids = np.where(final_rating['title'] == name)[0][0]
-                ids_index.append(ids)
-
-            for idx in ids_index:
-                url = final_rating.iloc[idx]['image_url']
-                poster_url.append(url)
-
-            return poster_url
-        
-        except Exception as e:
-            raise AppException(e, sys) from e
-        
-
-
     def recommend_book(self,book_name):
         try:
-            books_list = []
             model = pickle.load(open(self.recommendation_config.trained_model_path,'rb'))
             book_pivot =  pickle.load(open(self.recommendation_config.book_pivot_serialized_objects,'rb'))
+            final_rating =  pickle.load(open(self.recommendation_config.final_rating_serialized_objects,'rb'))
             book_id = np.where(book_pivot.index == book_name)[0][0]
             distance, suggestion = model.kneighbors(book_pivot.iloc[book_id,:].values.reshape(1,-1), n_neighbors=6 )
-
-            poster_url = self.fetch_poster(suggestion)
             
-            for i in range(len(suggestion)):
-                    books = book_pivot.index[suggestion[i]]
-                    for j in books:
-                        books_list.append(j)
-            return books_list , poster_url   
+            book_name = []
+            for book_id in suggestion:
+                book_name.append(book_pivot.index[book_id])    
+                
+            ids_index = []
+            for name in book_name[0]: 
+                ids = np.where(final_rating['title'] == name)[0][0]
+                ids_index.append(ids)  
+                
+            poster_url=[]          
+            for idx in ids_index:
+                url = final_rating.iloc[idx]['image_url']    
+                poster_url.append(url)                
+            
+            return book_name, poster_url   
         
         except Exception as e:
             raise AppException(e, sys) from e
@@ -76,23 +58,24 @@ class Recommendation:
     def recommendations_engine(self,selected_books):
         try:
             recommended_books,poster_url = self.recommend_book(selected_books)
-            col1, col2, col3, col4, col5 = st.columns(5)
+            col1, col2, col3, col4, col5 = st.columns(5) # to show all five books in one line
             with col1:
-                st.text(recommended_books[1])
+                st.text(recommended_books[0][1])
                 st.image(poster_url[1])
             with col2:
-                st.text(recommended_books[2])
+                st.text(recommended_books[0][2])
                 st.image(poster_url[2])
 
             with col3:
-                st.text(recommended_books[3])
+                st.text(recommended_books[0][3])
                 st.image(poster_url[3])
             with col4:
-                st.text(recommended_books[4])
+                st.text(recommended_books[0][4])
                 st.image(poster_url[4])
             with col5:
-                st.text(recommended_books[5])
+                st.text(recommended_books[0][5])
                 st.image(poster_url[5])
+        
         except Exception as e:
             raise AppException(e, sys) from e
 

@@ -53,6 +53,7 @@ class DataIngestion:
             os.makedirs(ingested_dir, exist_ok=True)
             with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
                 zip_ref.extractall(ingested_dir)
+                # unzip in ingested_dir
             logging.info(f"Extracting zip file: {zip_file_path} into dir: {ingested_dir}")
         except Exception as e:
             raise AppException(e,sys) from e

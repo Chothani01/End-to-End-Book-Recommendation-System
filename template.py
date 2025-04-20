@@ -42,6 +42,8 @@ for filepath in list_of_files:
     filedir, filename = os.path.split(filepath)
 
     if filedir !="":
+        # Use os.mkdir() when you want to create a single directory and are sure the parent exists.
+        # Use os.makedirs() when you want to create nested directories, and want it to create any missing parent directories automatically.
         os.makedirs(filedir, exist_ok=True)
         logging.info(f"Creating directory: {filedir} for the file {filename}")
 
@@ -50,7 +52,5 @@ for filepath in list_of_files:
         with open(filepath, 'w') as f:
             pass
             logging.info(f"Creating empty file: {filename}")
-
-    
     else:
         logging.info(f"{filename} is already created")

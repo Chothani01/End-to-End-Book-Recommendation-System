@@ -1,5 +1,6 @@
 from setuptools import setup, find_packages
 
+# it is helpful if you want to publish your own library on pypi it makes your readme file for it 
 with open("README.md", "r", encoding="utf-8") as f:
     long_description = f.read()
 
