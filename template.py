@@ -33,8 +33,6 @@ list_of_files = [
     "app.py",
     "Dockerfile",
     "setup.py"
-
-
 ]
 
 
