@@ -25,9 +25,13 @@ class Recommendation:
             book_id = np.where(book_pivot.index == book_name)[0][0]
             distance, suggestion = model.kneighbors(book_pivot.iloc[book_id,:].values.reshape(1,-1), n_neighbors=6 )
             
+            # book_name = []
+            # for book_id in suggestion:
+            #     book_name.append(book_pivot.index[book_id])    
+            
             book_name = []
-            for book_id in suggestion:
-                book_name.append(book_pivot.index[book_id])    
+            for book_id in suggestion[0]:
+                book_name.append(book_id)  
                 
             ids_index = []
             for name in book_name[0]: 
@@ -60,20 +64,20 @@ class Recommendation:
             recommended_books,poster_url = self.recommend_book(selected_books)
             col1, col2, col3, col4, col5 = st.columns(5) # to show all five books in one line
             with col1:
-                st.text(recommended_books[0][1])
+                st.text(recommended_books[1])
                 st.image(poster_url[1])
             with col2:
-                st.text(recommended_books[0][2])
+                st.text(recommended_books[2])
                 st.image(poster_url[2])
 
             with col3:
-                st.text(recommended_books[0][3])
+                st.text(recommended_books[3])
                 st.image(poster_url[3])
             with col4:
-                st.text(recommended_books[0][4])
+                st.text(recommended_books[4])
                 st.image(poster_url[4])
             with col5:
-                st.text(recommended_books[0][5])
+                st.text(recommended_books[5])
                 st.image(poster_url[5])
         
         except Exception as e:
