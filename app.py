@@ -34,7 +34,7 @@ class Recommendation:
                 book_name.append(book_id)  
                 
             ids_index = []
-            for name in book_name[0]: 
+            for name in book_name: 
                 ids = np.where(final_rating['title'] == name)[0][0]
                 ids_index.append(ids)  
                 
