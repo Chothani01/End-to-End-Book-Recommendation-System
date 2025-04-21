@@ -31,8 +31,8 @@ class Recommendation:
             
             book_name = []
             for book_id in suggestion[0]:
-                book_name.append(book_id)  
-                
+                book_name.append(book_pivot.index[book_id]) 
+                    
             ids_index = []
             for name in book_name: 
                 ids = np.where(final_rating['title'] == name)[0][0]
@@ -48,7 +48,7 @@ class Recommendation:
         except Exception as e:
             raise AppException(e, sys) from e
 
-    
+
     def train_engine(self):
         try:
             obj = TrainingPipeline()
@@ -88,7 +88,6 @@ class Recommendation:
 if __name__ == "__main__":
     st.header('End to End Books Recommender System')
     st.text("This is a collaborative filtering based recommendation system!")
-
     obj = Recommendation()
 
     #Training
