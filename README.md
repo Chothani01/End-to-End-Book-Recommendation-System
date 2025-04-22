@@ -1,7 +1,5 @@
 # End-to-End-Book-Recommendation-System
-For demo of this application click on 
-(Application link)
-[https://ml-based-book-recommendation-system-by-princechothani.streamlit.app/]
+For demo of this application click on [Application link](https://ml-based-book-recommendation-system-by-princechothani.streamlit.app/)
 
 ## Workflow
 
